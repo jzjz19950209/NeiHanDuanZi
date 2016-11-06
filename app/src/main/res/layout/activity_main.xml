@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.qf.neihanduanzi.MainActivity">
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout1"
+        android:layout_height="56dp">
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="首页"
+            android:id="@+id/line_home"
+            android:gravity="center"
+            android:drawableTop="@drawable/home_bg"
+            style="@style/my_rb_style"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/line_explore"
+            android:text="发现"
+            android:gravity="center"
+            android:drawableTop="@drawable/explore_bg"
+            style="@style/my_rb_style"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/line_new"
+            android:text="新鲜"
+            android:gravity="center"
+            android:drawableTop="@drawable/new_bg"
+            style="@style/my_rb_style"
+            android:layout_height="match_parent" />
+        <RadioButton
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:id="@+id/line_message"
+            android:text="消息"
+            android:drawableTop="@drawable/message_bg"
+            style="@style/my_rb_style"
+            android:layout_height="match_parent" />
+
+    </RadioGroup>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:id="@+id/linearLayout1"-->
+        <!--android:layout_height="56dp">-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:id="@+id/line_home"-->
+            <!--android:layout_weight="1"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_height="match_parent">-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="36dp"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:id="@+id/home"-->
+                <!--android:padding="7dp"-->
+                <!--android:focusable="false"-->
+                <!--android:src="@drawable/ic_tab_home_normal_night"-->
+                <!--android:layout_height="36dp" />-->
+            <!--<TextView-->
+                <!--android:layout_width="30dp"-->
+                <!--android:text="首页"-->
+                <!--android:textColor="@color/colorText"-->
+                <!--android:id="@+id/tv1"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:id="@+id/line_explore"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_height="match_parent">-->
+            <!--<ImageView-->
+                <!--android:layout_width="36dp"-->
+                <!--android:scaleType="fitCenter"-->
+                <!--android:padding="7dp"-->
+                <!--android:src="@drawable/ic_tab_discovery_normal_night"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:id="@+id/explore"-->
+                <!--android:layout_height="36dp" />-->
+            <!--<TextView-->
+                <!--android:layout_width="30dp"-->
+                <!--android:text="发现"-->
+                <!--android:id="@+id/tv2"-->
+                <!--android:textColor="@color/colorText"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:id="@+id/line_new"-->
+            <!--android:layout_weight="1"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_height="match_parent">-->
+            <!--<ImageView-->
+                <!--android:layout_width="36dp"-->
+                <!--android:src="@drawable/ic_tab_fresh_normal_night"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_weight="1"-->
+                <!--android:padding="7dp"-->
+                <!--android:id="@+id/news"-->
+                <!--android:layout_height="36dp" />-->
+            <!--<TextView-->
+                <!--android:layout_width="30dp"-->
+                <!--android:text="新鲜"-->
+                <!--android:id="@+id/tv3"-->
+                <!--android:textColor="@color/colorText"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:id="@+id/line_message"-->
+            <!--android:orientation="vertical"-->
+            <!--android:layout_height="match_parent">-->
+            <!--<ImageView-->
+                <!--android:layout_width="36dp"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:src="@drawable/ic_tab_msg_normal_night"-->
+                <!--android:id="@+id/message"-->
+                <!--android:padding="7dp"-->
+                <!--android:layout_height="36dp" />-->
+            <!--<TextView-->
+                <!--android:layout_width="30dp"-->
+                <!--android:text="消息"-->
+                <!--android:id="@+id/tv4"-->
+                <!--android:textColor="@color/colorText"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_height="wrap_content" />-->
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/linearLayout"
+        android:orientation="vertical"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_height="match_parent">
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".home.View.Duanzi_details_Activity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/title_details"
+        android:background="@color/colorTitle"
+        android:layout_height="40dp">
+        <ImageView
+            android:layout_width="40dp"
+            android:onClick="back"
+            android:src="@drawable/media_back_preview_press"
+            android:layout_marginLeft="10dp"
+            android:layout_height="40dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="详情"
+            android:textColor="@color/colorCategroy"
+            android:gravity="center"
+            android:textSize="16dp"
+            android:layout_centerInParent="true"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:background="@null"
+            android:gravity="center"
+            android:textColor="@color/colorCategroy"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:textSize="18dp"
+            android:text="举报"
+            android:layout_height="match_parent" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:id="@+id/input_comment"
+        android:layout_alignParentBottom="true"
+        android:layout_height="50dp">
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/line"
+            android:background="@color/colorCategroy"
+            android:layout_height="1dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:scaleType="fitXY"
+            android:layout_below="@+id/line"
+            android:padding="5dp"
+            android:src="@drawable/ss_btn_action_normal"
+            android:layout_height="match_parent" />
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/pen"
+            android:padding="3dp"
+            android:src="@drawable/ic_write"
+            android:layout_centerVertical="true"
+            android:layout_height="30dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/pen"
+            android:gravity="center"
+            android:textSize="15dp"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/colorCategroy"
+            android:layout_centerVertical="true"
+            android:text="期待你的神评论"
+            android:layout_height="30dp" />
+
+    </RelativeLayout>
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:id="@+id/details_pager"
+        android:layout_above="@+id/input_comment"
+        android:layout_below="@+id/title_details"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_above="@+id/input_comment"-->
+        <!--android:layout_below="@+id/title_details"-->
+        <!--android:layout_height="match_parent">-->
+        <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_below="@+id/title_details"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/content_details"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:orientation="vertical"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content">&ndash;&gt;-->
+        <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+        <!--&lt;!&ndash;<ListView&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:id="@+id/comment_details"&ndash;&gt;-->
+            <!--&lt;!&ndash;android:layout_height="wrap_content">&ndash;&gt;-->
+        <!--&lt;!&ndash;</ListView>&ndash;&gt;-->
+
+    <!--</ScrollView>-->
+
+</RelativeLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="match_parent"
+        android:id="@+id/swLayout"
+        android:layout_height="match_parent">
+        <ListView
+            android:layout_width="match_parent"
+            android:id="@+id/lv"
+            android:layout_height="match_parent"></ListView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <org.lenve.customshapeimageview.CustomShapeImageView
+        style="@style/refreshButton"
+        app:shape="circle"
+        android:src="@drawable/refresh_background"
+        android:elevation="10dp"/>
+    <ImageView
+        style="@style/refreshButton"
+        android:id="@+id/refresh"
+        android:onClick="refresh_data"
+        android:elevation="12dp"
+        android:src="@drawable/ic_profile_refresh_night" />
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:text="20条新内容"-->
+        <!--android:id="@+id/refresh_draw"-->
+        <!--android:visibility="gone"-->
+        <!--android:padding="5dp"-->
+        <!--android:textColor="@color/colorWhite"-->
+        <!--android:background="@drawable/refresh_result_draw"-->
+        <!--android:layout_marginTop="20dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_height="wrap_content" />-->
+</RelativeLayout>
