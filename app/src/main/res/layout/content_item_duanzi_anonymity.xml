@@ -54,6 +54,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="40dp"
+                android:id="@+id/image_zan"
                 android:src="@drawable/ic_digg_normal"
                 android:layout_height="40dp" />
             <TextView
@@ -72,6 +73,7 @@
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="40dp"
+                android:id="@+id/image_cai"
                 android:src="@drawable/ic_bury_normal"
                 android:layout_height="40dp" />
             <TextView

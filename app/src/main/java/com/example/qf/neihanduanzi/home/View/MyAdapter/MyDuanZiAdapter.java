@@ -31,7 +31,10 @@ public class MyDuanZiAdapter extends BaseAdapter {
     private final static int NORMAL_COMMENT=2;
     private final static int ANONYMITY_NOCOMMENT=3;
     private final static int ANONYMITY_COMMENT=4;
-
+    private int state_1=1;
+    private int state_2=1;
+    private int state_3=1;
+    private int state_4=1;
     public MyDuanZiAdapter(List<UserBean> list, Context context) {
         this.list = list;
         this.context = context;
@@ -112,7 +115,7 @@ public class MyDuanZiAdapter extends BaseAdapter {
                     break;
             }
         }
-        UserBean userBean=list.get(position);
+        final UserBean userBean=list.get(position);
         switch (itemViewType){
             case NORMAL_ONCOMMENT:
                 Picasso.with(context).load(userBean.getAvatar_url()).into(type1Holder.icon);
@@ -128,6 +131,35 @@ public class MyDuanZiAdapter extends BaseAdapter {
                 }else {
                     type1Holder.refresh_text.setVisibility(View.GONE);
                 }
+                final Type1Holder finalType1Holder = type1Holder;
+                type1Holder.image_zan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (state_1==1){
+                            finalType1Holder.image_zan.setImageResource(R.drawable.ic_digg_pressed);
+                            finalType1Holder.up.setText(MyUtil.numberFormat(userBean.getDigg_count()+1));
+                            state_1=2;
+                        }else if (state_1==2){
+                            finalType1Holder.image_zan.setImageResource(R.drawable.ic_digg_normal);
+                            finalType1Holder.up.setText(MyUtil.numberFormat(userBean.getDigg_count()));
+                            state_1=1;
+                        }
+                    }
+                });
+                type1Holder.imame_cai.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (state_1==1){
+                            finalType1Holder.imame_cai.setImageResource(R.drawable.ic_bury_pressed_night);
+                            finalType1Holder.down.setText(MyUtil.numberFormat(userBean.getBury_count()+1));
+                            state_1=3;
+                        }else if (state_1==3){
+                            finalType1Holder.imame_cai.setImageResource(R.drawable.ic_bury_normal);
+                            finalType1Holder.down.setText(MyUtil.numberFormat(userBean.getBury_count()));
+                            state_1=1;
+                        }
+                    }
+                });
                 break;
             case NORMAL_COMMENT:
                 Picasso.with(context).load(userBean.getAvatar_url()).into(type2Holder.icon);
@@ -147,6 +179,35 @@ public class MyDuanZiAdapter extends BaseAdapter {
                 }else {
                     type2Holder.refresh_text.setVisibility(View.GONE);
                 }
+                final Type2Holder finalType2Holder = type2Holder;
+                type2Holder.image_zan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (state_2==1){
+                            finalType2Holder.image_zan.setImageResource(R.drawable.ic_digg_pressed);
+                            finalType2Holder.up.setText(MyUtil.numberFormat(userBean.getDigg_count()+1));
+                            state_2=2;
+                        }else if (state_2==2){
+                            finalType2Holder.image_zan.setImageResource(R.drawable.ic_digg_normal);
+                            finalType2Holder.up.setText(MyUtil.numberFormat(userBean.getDigg_count()));
+                            state_2=1;
+                        }
+                    }
+                });
+                type2Holder.imame_cai.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (state_2==1){
+                            finalType2Holder.imame_cai.setImageResource(R.drawable.ic_bury_pressed_night);
+                            finalType2Holder.down.setText(MyUtil.numberFormat(userBean.getBury_count()+1));
+                            state_2=3;
+                        }else if (state_2==3){
+                            finalType2Holder.imame_cai.setImageResource(R.drawable.ic_bury_normal);
+                            finalType2Holder.down.setText(MyUtil.numberFormat(userBean.getBury_count()));
+                            state_2=1;
+                        }
+                    }
+                });
                 break;
             case ANONYMITY_NOCOMMENT:
                 type3Holder.content.setText(userBean.getContent());
@@ -160,6 +221,35 @@ public class MyDuanZiAdapter extends BaseAdapter {
                 }else {
                     type3Holder.refresh_text.setVisibility(View.GONE);
                 }
+                final Type3Holder finalType3Holder = type3Holder;
+                type3Holder.image_zan.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (state_3==1){
+                            finalType3Holder.image_zan.setImageResource(R.drawable.ic_digg_pressed);
+                            finalType3Holder.up.setText(MyUtil.numberFormat(userBean.getDigg_count()+1));
+                            state_3=2;
+                        }else if (state_3==2){
+                            finalType3Holder.image_zan.setImageResource(R.drawable.ic_digg_normal);
+                            finalType3Holder.up.setText(MyUtil.numberFormat(userBean.getDigg_count()));
+                            state_3=1;
+                        }
+                    }
+                });
+                type3Holder.imame_cai.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if (state_3==1){
+                            finalType3Holder.imame_cai.setImageResource(R.drawable.ic_bury_pressed_night);
+                            finalType3Holder.down.setText(MyUtil.numberFormat(userBean.getBury_count()+1));
+                            state_3=3;
+                        }else if (state_3==3){
+                            finalType3Holder.imame_cai.setImageResource(R.drawable.ic_bury_normal);
+                            finalType3Holder.down.setText(MyUtil.numberFormat(userBean.getBury_count()));
+                            state_3=1;
+                        }
+                    }
+                });
                 break;
             case ANONYMITY_COMMENT:
                 type4Holder.content.setText(userBean.getContent());
@@ -177,8 +267,36 @@ public class MyDuanZiAdapter extends BaseAdapter {
                 }else {
                     type4Holder.refresh_text.setVisibility(View.GONE);
                 }
+                final Type4Holder finalType4Holder = type4Holder;
+                type4Holder.image_zan.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (state_4==1){
+                        finalType4Holder.image_zan.setImageResource(R.drawable.ic_digg_pressed);
+                        finalType4Holder.up.setText(MyUtil.numberFormat(userBean.getDigg_count()+1));
+                        state_4=2;
+                    }else if (state_4==2){
+                        finalType4Holder.image_zan.setImageResource(R.drawable.ic_digg_normal);
+                        finalType4Holder.up.setText(MyUtil.numberFormat(userBean.getDigg_count()));
+                        state_4=1;
+                    }
+                }
+            });
+            type4Holder.imame_cai.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (state_4==1){
+                        finalType4Holder.imame_cai.setImageResource(R.drawable.ic_bury_pressed_night);
+                        finalType4Holder.down.setText(MyUtil.numberFormat(userBean.getBury_count()+1));
+                        state_4=3;
+                    }else if (state_4==3){
+                        finalType4Holder.imame_cai.setImageResource(R.drawable.ic_bury_normal);
+                        finalType4Holder.down.setText(MyUtil.numberFormat(userBean.getBury_count()));
+                        state_4=1;
+                    }
+                }
+            });
                 break;
-
         }
         return convertView;
     }
@@ -201,6 +319,10 @@ public class MyDuanZiAdapter extends BaseAdapter {
         TextView share;
         @BindView(R.id.refresh_text)
         TextView refresh_text;
+        @BindView(R.id.image_zan)
+        ImageView image_zan;
+        @BindView(R.id.image_cai)
+        ImageView imame_cai;
         public Type1Holder(View itemView){
             ButterKnife.bind(this,itemView);
         }
@@ -234,6 +356,10 @@ public class MyDuanZiAdapter extends BaseAdapter {
         TextView share;
         @BindView(R.id.refresh_text)
         TextView refresh_text;
+        @BindView(R.id.image_zan)
+        ImageView image_zan;
+        @BindView(R.id.image_cai)
+        ImageView imame_cai;
         public Type2Holder(View itemView){
             ButterKnife.bind(this,itemView);
         }
@@ -253,6 +379,10 @@ public class MyDuanZiAdapter extends BaseAdapter {
         TextView share;
         @BindView(R.id.refresh_text)
         TextView refresh_text;
+        @BindView(R.id.image_zan)
+        ImageView image_zan;
+        @BindView(R.id.image_cai)
+        ImageView imame_cai;
         public Type3Holder(View itemView){
             ButterKnife.bind(this,itemView);
         }
@@ -282,6 +412,10 @@ public class MyDuanZiAdapter extends BaseAdapter {
         TextView share;
         @BindView(R.id.refresh_text)
         TextView refresh_text;
+        @BindView(R.id.image_zan)
+        ImageView image_zan;
+        @BindView(R.id.image_cai)
+        ImageView imame_cai;
         public Type4Holder(View itemView){
             ButterKnife.bind(this,itemView);
         }

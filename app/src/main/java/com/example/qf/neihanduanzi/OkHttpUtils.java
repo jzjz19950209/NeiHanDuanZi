@@ -1,7 +1,9 @@
 package com.example.qf.neihanduanzi;
 
 import android.os.Handler;
+import android.util.Log;
 
+import com.example.qf.neihanduanzi.home.Model.OnDownLoadVideoListener;
 import com.example.qf.neihanduanzi.home.Model.OnLoadDataListener;
 
 import java.io.IOException;
@@ -18,12 +20,13 @@ import okhttp3.Response;
  * Created by qf on 2016/10/14.
  */
 public class OkHttpUtils {
-    private static OkHttpClient client=new OkHttpClient.Builder()
+    private static OkHttpClient client = new OkHttpClient.Builder()
             .connectTimeout(5, TimeUnit.SECONDS)
             .build();
-    private static Handler mHandler=new Handler();
-    public static void getData(String httpUrl,final OnLoadDataListener onLoadDataListener){
-        final Request request=new Request.Builder()
+    private static Handler mHandler = new Handler();
+
+    public static void getData(String httpUrl, final OnLoadDataListener onLoadDataListener) {
+        final Request request = new Request.Builder()
                 .url(httpUrl).build();
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -80,5 +83,35 @@ public class OkHttpUtils {
                 }
             }
         });
+    }
+
+    public static void getVideoData(String url, final OnDownLoadVideoListener onDownLoadVideoListener) {
+            Request request=new Request.Builder().url(url).build();
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, final IOException e) {
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            onDownLoadVideoListener.onFailure(e.getMessage());
+                        }
+                    });
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (response.isSuccessful()){
+                        String result = response.body().string();
+                        final List<VideoBean> list=JsonParse.parseJson3List(result);
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                onDownLoadVideoListener.onResponse(list);
+                            }
+                        });
+                    }
+
+                }
+            });
     }
 }

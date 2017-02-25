@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
+    android:id="@+id/relativeLayout"
     tools:context=".home.View.Duanzi_details_Activity">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -34,11 +36,24 @@
             android:text="举报"
             android:layout_height="match_parent" />
     </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+
+        android:id="@+id/details_pager"
+        android:layout_above="@+id/input_comment"
+        android:layout_below="@+id/title_details"
+        android:layout_height="match_parent">
+
+    </android.support.v4.view.ViewPager>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:id="@+id/input_comment"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:layout_height="50dp">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
         <View
             android:layout_width="match_parent"
             android:id="@+id/line"
@@ -65,20 +80,27 @@
             android:gravity="center"
             android:textSize="15dp"
             android:layout_marginLeft="5dp"
+            android:id="@+id/tt"
             android:textColor="@color/colorCategroy"
             android:layout_centerVertical="true"
             android:text="期待你的神评论"
             android:layout_height="30dp" />
-
+        <Button
+            android:layout_width="60dp"
+            android:background="@null"
+            android:id="@+id/queding"
+            android:layout_alignParentRight="true"
+            android:text="确定"
+            android:visibility="gone"
+            android:layout_height="match_parent" />
+        <EditText
+            android:layout_width="match_parent"
+            android:id="@+id/edit"
+            android:layout_toLeftOf="@+id/queding"
+            android:layout_toRightOf="@+id/pen"
+            android:visibility="gone"
+            android:layout_height="match_parent" />
     </RelativeLayout>
-    <android.support.v4.view.ViewPager
-        android:layout_width="match_parent"
-        android:id="@+id/details_pager"
-        android:layout_above="@+id/input_comment"
-        android:layout_below="@+id/title_details"
-        android:layout_height="match_parent">
-
-    </android.support.v4.view.ViewPager>
     <!--<ScrollView-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_above="@+id/input_comment"-->

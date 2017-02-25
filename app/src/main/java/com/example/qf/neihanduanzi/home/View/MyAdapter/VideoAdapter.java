@@ -7,7 +7,10 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.qf.neihanduanzi.MyUtil;
@@ -36,7 +39,7 @@ public class VideoAdapter extends BaseAdapter{
         mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
-
+                mp.start();
 
             }
         });
@@ -84,11 +87,16 @@ public class VideoAdapter extends BaseAdapter{
         Picasso.with(context).load(videoBean.getCommentIcon()).into(viewHolder.commentIcon);
         int width=videoBean.getWidth();
         int height=videoBean.getHeight();
-        ViewGroup.LayoutParams lp=viewHolder.iv_video.getLayoutParams();
+        FrameLayout frameLayout=(FrameLayout) convertView.findViewById(R.id.videoView);
+
+        //ViewGroup.LayoutParams lp = viewHolder.iv_video.getLayoutParams();
+        ViewGroup.LayoutParams lp = frameLayout.getLayoutParams();
         lp.width=width;
         lp.height=height;
         viewHolder.iv_video.requestLayout();
-        viewHolder.surfaceView.setLayoutParams(lp);
+        frameLayout.requestLayout();
+        //viewHolder.surfaceView.setLayoutParams(lp);
+        frameLayout.setLayoutParams(lp);
         Picasso.with(context).load(videoBean.getVideoImage()).into(viewHolder.iv_video);
         viewHolder.userName.setText(videoBean.getUserName());
         viewHolder.content.setText(videoBean.getContent());
@@ -96,7 +104,7 @@ public class VideoAdapter extends BaseAdapter{
         viewHolder.up.setText(MyUtil.numberFormat(videoBean.getDigg_count()));
         viewHolder.down.setText(MyUtil.numberFormat(videoBean.getBury_count()));
         viewHolder.hot.setText(MyUtil.numberFormat(videoBean.getCommentCount()));
-        viewHolder.zan.setText(MyUtil.numberFormat(videoBean.getZan()));
+        //viewHolder.zan.setText(MyUtil.numberFormat(videoBean.getZan()));
 
         Object tag = viewHolder.iv_video.getTag();
         if (tag!=null){

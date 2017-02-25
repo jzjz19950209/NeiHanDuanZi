@@ -26,17 +26,18 @@ public class MyUtil {
         }
     }
     public static String timeFormat(long time){
-        SimpleDateFormat sdf=new SimpleDateFormat("MM-dd HH:mm");
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Calendar calendar=Calendar.getInstance();
-        long currentTime=calendar.getTimeInMillis();
+        long currentTime=calendar.getTimeInMillis()/1000;
         //86400000
-        if (currentTime-time>86400){
-            return sdf.format(time*1000);
-        }else if (currentTime-time>14400){
-            return ""+(currentTime-time)/60/60+"小时前";
-        }else {
-            return ""+(currentTime-time)/60+"分钟前";
-        }
+//        if (currentTime-time>86400){
+//            return sdf.format(time*1000);
+//        }else if (currentTime-time>14400){
+//            return ""+(currentTime-time)/60/60+"小时前";
+//        }else {
+//            return ""+(currentTime-time)/60+"分钟前";
+//        }
+        return sdf.format(time*1000);
     }
 
 }

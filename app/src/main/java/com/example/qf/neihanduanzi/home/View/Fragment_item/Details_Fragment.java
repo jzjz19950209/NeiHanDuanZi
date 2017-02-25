@@ -3,12 +3,15 @@ package com.example.qf.neihanduanzi.home.View.Fragment_item;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.qf.neihanduanzi.DataUtils;
 import com.example.qf.neihanduanzi.MyUtil;
@@ -34,7 +37,9 @@ public class Details_Fragment extends Fragment implements IDetailsView{
     private Button guanzhu;
     private int id;
     private TextView total_number;
+    private MyListViewAdapter adapter;
     private MyListView myListView;
+    private boolean b=false;
     private Home_comment_Presenter home_comment_presenter=new Home_comment_Presenter(this);
     public static Details_Fragment getInstance(int id){
         Details_Fragment details_Fragment=new Details_Fragment();
@@ -70,7 +75,21 @@ public class Details_Fragment extends Fragment implements IDetailsView{
         down.setText(MyUtil.numberFormat(userBean_user.getBury_count()));
         hot.setText(MyUtil.numberFormat(userBean_user.getComment_count()));
         share.setText(MyUtil.numberFormat(userBean_user.getShare_count()));
+        guanzhu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!b){
+                    guanzhu.setText("已关注");
+                    Toast.makeText(getContext(), "已关注", Toast.LENGTH_SHORT).show();
+                    b=true;
+                }else {
+                    guanzhu.setText("关注");
+                    Toast.makeText(getContext(), "取消关注", Toast.LENGTH_SHORT).show();
+                    b=false;
+                }
 
+            }
+        });
     }
 
     @Nullable
@@ -97,8 +116,12 @@ public class Details_Fragment extends Fragment implements IDetailsView{
     @Override
     public void initCommentData(List<UserBean> list) {
        // Log.d("jzjz", "initCommentData: "+list.toString());
+        DataUtils.map.put(id,list);
         total_number.setText("新鲜评论"+"("+list.size()+")");
-        MyListViewAdapter adapter=new MyListViewAdapter(list,getContext());
+        adapter=new MyListViewAdapter(DataUtils.map.get(id),getContext());
         myListView.setAdapter(adapter);
+    }
+    public void refreshData(){
+        adapter.notifyDataSetChanged();
     }
 }

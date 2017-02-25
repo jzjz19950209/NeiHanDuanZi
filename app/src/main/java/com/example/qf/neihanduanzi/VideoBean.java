@@ -12,6 +12,7 @@ public class VideoBean {
     private int digg_count;
     private int bury_count;
     private int commentCount;
+    private int share_count;
     private String shareUrl;
     private String commentIcon;
     private String conmentName;
@@ -40,7 +41,12 @@ public class VideoBean {
                 ", height=" + height +
                 '}';
     }
-
+    public void setShare_count(int i){
+        share_count=i;
+    }
+    public int getShare_count(){
+        return share_count;
+    }
     public String getUserName() {
         return userName;
     }

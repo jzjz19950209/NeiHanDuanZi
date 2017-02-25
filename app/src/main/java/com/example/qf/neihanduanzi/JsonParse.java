@@ -118,4 +118,45 @@ public class JsonParse {
         }
         return list;
     }
+    public static List<VideoBean> parseJson3List(String json){
+        List<VideoBean> list=new ArrayList<>();
+        try {
+            JSONObject jsonObject=new JSONObject(json);
+            JSONArray data=jsonObject.getJSONObject("data").getJSONArray("data");
+            for (int i = 0; i < data.length(); i++) {
+                JSONObject jsonObject1=data.getJSONObject(i);
+                if (!jsonObject1.has("ad")&&!jsonObject1.has("data")) {
+                    JSONObject group = jsonObject1.getJSONObject("group");
+                    String text = group.getString("text");
+                    JSONObject video_720p = group.getJSONObject("720p_video");
+                    int width = video_720p.getInt("width");
+                    int height = video_720p.getInt("height");
+                    JSONArray url_list = video_720p.getJSONArray("url_list");
+                    String url = url_list.getJSONObject(0).getString("url");
+                    int digg_count = group.getInt("digg_count");
+                    int comment_count = group.getInt("comment_count");
+                    int bury_count = group.getInt("bury_count");
+                    int share_count=group.getInt("share_count");
+                    JSONObject user=group.getJSONObject("user");
+                    String name=user.getString("name");
+                    String userIcon=user.getString("avatar_url");
+                    VideoBean videoBean=new VideoBean();
+                    videoBean.setUserIcon(userIcon);
+                    videoBean.setContent(text);
+                    videoBean.setBury_count(bury_count);
+                    videoBean.setDigg_count(digg_count);
+                    videoBean.setUserName(name);
+                    videoBean.setWidth(width);
+                    videoBean.setHeight(height);
+                    videoBean.setShare_count(share_count);
+                    list.add(videoBean);
+                }
+            }
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
