@@ -20,7 +20,7 @@ public class VideoBean {
     private int zan;
     private int width;
     private int height;
-
+    private String categroy;
     @Override
     public String toString() {
         return "VideoBean{" +
@@ -41,6 +41,15 @@ public class VideoBean {
                 ", height=" + height +
                 '}';
     }
+
+    public String getCategroy() {
+        return categroy;
+    }
+
+    public void setCategroy(String categroy) {
+        this.categroy = categroy;
+    }
+
     public void setShare_count(int i){
         share_count=i;
     }

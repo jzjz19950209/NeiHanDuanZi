@@ -1,5 +1,7 @@
 package com.example.qf.neihanduanzi;
 
+import android.util.Log;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -140,6 +142,10 @@ public class JsonParse {
                     JSONObject user=group.getJSONObject("user");
                     String name=user.getString("name");
                     String userIcon=user.getString("avatar_url");
+                    JSONObject large_cover=group.getJSONObject("large_cover");
+                    JSONArray urlList=large_cover.getJSONArray("url_list");
+                    String imageUrl = urlList.getJSONObject(0).getString("url");
+                    String category_name = group.getString("category_name");
                     VideoBean videoBean=new VideoBean();
                     videoBean.setUserIcon(userIcon);
                     videoBean.setContent(text);
@@ -149,6 +155,10 @@ public class JsonParse {
                     videoBean.setWidth(width);
                     videoBean.setHeight(height);
                     videoBean.setShare_count(share_count);
+                    videoBean.setVideoUrl(url);
+                    videoBean.setVideoImage(imageUrl);
+                    videoBean.setShare_count(share_count);
+                    videoBean.setCategroy(category_name);
                     list.add(videoBean);
                 }
             }
@@ -156,6 +166,10 @@ public class JsonParse {
 
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+        for (int i = 0; i < list.size(); i++) {
+
+            Log.d("jzjz", "parseJson3List: "+list.get(i));
         }
         return list;
     }

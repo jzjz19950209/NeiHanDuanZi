@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
     <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:id="@+id/swLayout"
+        android:id="@+id/swLayout_video"
         android:layout_height="match_parent">
         <ListView
             android:layout_width="match_parent"
@@ -21,7 +21,6 @@
     <ImageView
         style="@style/refreshButton"
         android:id="@+id/refresh_video"
-        android:onClick="refresh_data"
         android:elevation="12dp"
         android:src="@drawable/ic_profile_refresh_night" />
 </RelativeLayout>

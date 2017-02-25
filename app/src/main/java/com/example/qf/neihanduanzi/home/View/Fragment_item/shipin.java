@@ -45,20 +45,35 @@ public class shipin extends Fragment implements IShipinView{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        if (view == null) {
-//            view=inflater.inflate(R.layout.video_fragment,container,false);
-//        }else {
-//            return view;
-//        }
-//        init(view);
-//        refresh.setAnimation(rotateAnimation);
-//        presenter.UpdateVideo();
+        if (view == null) {
+            view=inflater.inflate(R.layout.video_fragment,container,false);
+        }else {
+            return view;
+        }
+        init(view);
+        refresh.setAnimation(rotateAnimation);
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                swipeRefreshLayout.setRefreshing(true);
+                rotateAnimation.start();
+                presenter.UpdateVideo();
+            }
+        });
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                rotateAnimation.start();
+                presenter.UpdateVideo();
+            }
+        });
+        presenter.UpdateVideo();
 
         return view;
 
     }
     private void init(View view){
-        swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swLayout);
+        swipeRefreshLayout= (SwipeRefreshLayout) view.findViewById(R.id.swLayout_video);
         listView= (ListView) view.findViewById(R.id.lv_video);
         refresh= (ImageView) view.findViewById(R.id.refresh_video);
     }
@@ -68,4 +83,5 @@ public class shipin extends Fragment implements IShipinView{
         videoAdapter=new VideoAdapter(list,getActivity());
         listView.setAdapter(videoAdapter);
     }
+
 }

@@ -2,6 +2,7 @@ package com.example.qf.neihanduanzi.home.View.MyAdapter;
 
 import android.content.Context;
 import android.media.MediaPlayer;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SurfaceView;
 import android.view.View;
@@ -76,8 +77,9 @@ public class VideoAdapter extends BaseAdapter{
             viewHolder.zan= (TextView) convertView.findViewById(R.id.zan);
             viewHolder.commentIcon= (ImageView) convertView.findViewById(R.id.icon_comment);
             viewHolder.comment_content= (TextView) convertView.findViewById(R.id.content_comment);
-            viewHolder.iv_video= (ImageView) convertView.findViewById(R.id.icon_video);
+            viewHolder.iv_video= (ImageView) convertView.findViewById(R.id.iv_video);
             viewHolder.surfaceView= (SurfaceView) convertView.findViewById(R.id.surface_view);
+            viewHolder.share= (TextView) convertView.findViewById(R.id.share);
             convertView.setTag(viewHolder);
         }else {
             viewHolder= (ViewHolder) convertView.getTag();
@@ -87,19 +89,21 @@ public class VideoAdapter extends BaseAdapter{
         Picasso.with(context).load(videoBean.getCommentIcon()).into(viewHolder.commentIcon);
         int width=videoBean.getWidth();
         int height=videoBean.getHeight();
-        FrameLayout frameLayout=(FrameLayout) convertView.findViewById(R.id.videoView);
+        //FrameLayout frameLayout=(FrameLayout) convertView.findViewById(R.id.videoView);
 
         //ViewGroup.LayoutParams lp = viewHolder.iv_video.getLayoutParams();
-        ViewGroup.LayoutParams lp = frameLayout.getLayoutParams();
-        lp.width=width;
-        lp.height=height;
-        viewHolder.iv_video.requestLayout();
-        frameLayout.requestLayout();
+        //ViewGroup.LayoutParams lp = frameLayout.getLayoutParams();
+        //lp.width=width;
+        //lp.height=height;
+        //viewHolder.iv_video.requestLayout();
+        //frameLayout.requestLayout();
         //viewHolder.surfaceView.setLayoutParams(lp);
-        frameLayout.setLayoutParams(lp);
+        //frameLayout.setLayoutParams(lp);
         Picasso.with(context).load(videoBean.getVideoImage()).into(viewHolder.iv_video);
+        viewHolder.share.setText(MyUtil.numberFormat(videoBean.getShare_count()));
         viewHolder.userName.setText(videoBean.getUserName());
         viewHolder.content.setText(videoBean.getContent());
+        viewHolder.categroy.setText(videoBean.getCategroy());
         viewHolder.comment_content.setText(videoBean.getCommentContent());
         viewHolder.up.setText(MyUtil.numberFormat(videoBean.getDigg_count()));
         viewHolder.down.setText(MyUtil.numberFormat(videoBean.getBury_count()));
@@ -152,7 +156,7 @@ public class VideoAdapter extends BaseAdapter{
     }
     class ViewHolder{
         ImageView userIcon,iv_video,commentIcon;
-        TextView userName,content,categroy,up,down,hot,zan,comment_content;
+        TextView userName,content,categroy,up,down,hot,zan,comment_content,share;
         SurfaceView surfaceView;
 
     }
