@@ -74,7 +74,7 @@ public class JsonParse {
                 }
             }
         } catch (JSONException e) {
-            e.printStackTrace();
+
 
         }
         return list;
@@ -116,7 +116,7 @@ public class JsonParse {
             }
 
         } catch (JSONException e) {
-            e.printStackTrace();
+
         }
         return list;
     }
@@ -165,11 +165,7 @@ public class JsonParse {
 
 
         } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        for (int i = 0; i < list.size(); i++) {
 
-            Log.d("jzjz", "parseJson3List: "+list.get(i));
         }
         return list;
     }

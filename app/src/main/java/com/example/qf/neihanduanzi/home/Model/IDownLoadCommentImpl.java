@@ -13,7 +13,7 @@ public class IDownLoadCommentImpl implements IDownLoadCommentData{
 
     @Override
     public void getCommentData(final OnLoadDataListener onLoadDataListener) {
-        OkHttpUtils.getData_comment(DataUtils.DATA_COMMENT_URL, new OnLoadDataListener() {
+        OkHttpUtils.getDZComment(DataUtils.DATA_COMMENT_URL, new OnLoadDataListener() {
             @Override
             public void onResponse(List<UserBean> list) {
                 onLoadDataListener.onResponse(list);

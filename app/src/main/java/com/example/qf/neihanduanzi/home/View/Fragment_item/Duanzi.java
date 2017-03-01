@@ -1,10 +1,12 @@
 package com.example.qf.neihanduanzi.home.View.Fragment_item;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,8 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.example.qf.neihanduanzi.DataUtils;
 import com.example.qf.neihanduanzi.R;
 import com.example.qf.neihanduanzi.UserBean;
@@ -37,6 +41,7 @@ public class Duanzi extends Fragment implements IDuanziView{
     public RotateAnimation rotateAnimation;
     public  MyDuanZiAdapter adapter;
     private HomePresenter homePresenter=new HomePresenter(this);
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +52,7 @@ public class Duanzi extends Fragment implements IDuanziView{
         rotateAnimation.setRepeatMode(RotateAnimation.RESTART);
         rotateAnimation.setInterpolator(new LinearInterpolator());
         rotateAnimation.setRepeatCount(RotateAnimation.INFINITE);
+        //requestQueue=Volley.newRequestQueue(this.getActivity());
     }
 
     @Nullable

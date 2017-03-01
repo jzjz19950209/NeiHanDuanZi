@@ -1,5 +1,6 @@
 package com.example.qf.neihanduanzi.home.presenter;
 
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.qf.neihanduanzi.DataUtils;
@@ -55,6 +56,6 @@ public class HomePresenter {
         iDownLoadUserData=new IDownLoadUserDataImpl();
     }
     public void updateData(){
-        OkHttpUtils.getData(DataUtils.DATA_USER_URL,onLoadDataListener);
+        iDownLoadUserData.getUserData(onLoadDataListener);
     }
 }

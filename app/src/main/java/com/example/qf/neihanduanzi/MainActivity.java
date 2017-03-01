@@ -5,10 +5,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.qf.neihanduanzi.explore.Explore_fragment;
 import com.example.qf.neihanduanzi.home.View.Home_fragment;
 import com.example.qf.neihanduanzi.message.Message_fragment;
@@ -24,12 +28,14 @@ public class MainActivity extends AppCompatActivity{
     private FragmentTransaction transaction;
     private RadioGroup radioGroup;
     private RadioButton home,explore,news,message;
-
+    public RequestQueue requestQueue;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setView();
+        requestQueue=MyVolley.getMyVolley(this).getRequestQueue();
+        DataUtils.requestQueue=requestQueue;
 //        home.setImageResource(R.drawable.ic_tab_home_pressed);
 //        tv1.setTextColor(getResources().getColor(R.color.colorCategroy));
 //        transaction=getSupportFragmentManager().beginTransaction();

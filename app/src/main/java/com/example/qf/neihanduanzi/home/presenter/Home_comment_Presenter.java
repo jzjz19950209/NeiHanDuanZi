@@ -23,9 +23,6 @@ public class Home_comment_Presenter {
     private OnLoadDataListener onLoadDataListener=new OnLoadDataListener() {
         @Override
         public void onResponse(List<UserBean> list) {
-            for (UserBean userBean:list){
-               // Log.d("jzjz", "onResponse: "+list.toString());
-            }
             DataUtils.list_comment=list;
             iDetailsView.initCommentData(list);
             ((Details_Fragment) iDetailsView).details_refresh.setVisibility(View.GONE);
@@ -45,6 +42,6 @@ public class Home_comment_Presenter {
         iDownLoadCommentData=new IDownLoadCommentImpl();
     }
     public void initData(int id){
-        OkHttpUtils.getData_comment(DataUtils.DATA_COMMENT_URL,onLoadDataListener,DataUtils.list_user.get(id).getId());
+        iDownLoadCommentData.getCommentData(onLoadDataListener);
     }
 }
